@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=rabbitmq_db
+      - MYSQL_USER=rabbitmq
+      - MYSQL_PASSWORD=rabbitmq
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=adminrbtmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672

@@ -1,0 +1,240 @@
+openapi: 3.0.3
+info:
+  title: API RabbitMQ - Envio de E-mails
+  description: |
+    API para envio de mensagens de e-mail utilizando fila RabbitMQ.
+
+    ## Fluxo da aplicação
+    1. **Cliente** → Envia requisição `POST /envio-email` com os dados do e-mail
+    2. **Controller** → `RabbitMQController` recebe e converte o DTO para Model
+    3. **Service** → `RabbitMQService` persiste no banco MySQL com data/hora e status
+    4. **Producer** → `RabbitMQProdutor` envia `StatusMensagemDTO` para a Exchange RabbitMQ
+    5. **Exchange** → Roteia a mensagem para a Fila `fila_queue` via Routing Key
+    6. **Consumer** → `RabbitMQConsumidor` escuta a fila e processa a mensagem
+
+    ## Tecnologias
+    - **Spring Boot 4.1.0** (Java 17)
+    - **Spring Data JPA** + **MySQL 8**
+    - **Spring AMQP** + **RabbitMQ**
+    - **SpringDoc OpenAPI** (Swagger UI)
+    - **Lombok**
+    - **Docker Compose**
+  version: 1.0.0
+  contact:
+    name: Equipe Alloha
+    email: contato@alloha.com.br
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Servidor local de desenvolvimento
+
+tags:
+  - name: Mensagens
+    description: Endpoints para envio e consulta de mensagens via RabbitMQ
+
+paths:
+  /envio-email:
+    post:
+      tags:
+        - Mensagens
+      summary: Enviar e-mail para a fila
+      description: |
+        Recebe os dados do e-mail (**remetente, destinatário e mensagem**),
+        persiste no banco MySQL com status **ENVIADO** e envia para a fila RabbitMQ
+        para processamento assíncrono pelo consumidor.
+      operationId: enviarEmail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RabbitMQDTO'
+            example:
+              email: usuario@exemplo.com
+              nome: "João Silva"
+              mensagem: "Olá, este é um e-mail de teste."
+              observacao: "Envio em lote - campanha promocional"
+      responses:
+        '201':
+          description: Mensagem criada e enviada para a fila com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RabbitMQModel'
+              example:
+                id: 1
+                email: usuario@exemplo.com
+                nome: "João Silva"
+                mensagem: "Olá, este é um e-mail de teste."
+                observacao: "Envio em lote - campanha promocional"
+                dataMensagem: "2026-06-18T10:30:00"
+                status: "ENVIADO"
+        '400':
+          description: Dados inválidos (campos obrigatórios ausentes ou e-mail mal formatado)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: "Bad Request"
+                  message:
+                    type: string
+                    example: "Validation failed: email must be a valid e-mail address"
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 500
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+                  message:
+                    type: string
+                    example: "Erro ao conectar ao banco de dados ou ao RabbitMQ"
+
+  /mensagens:
+    get:
+      tags:
+        - Mensagens
+      summary: Listar todas as mensagens
+      description: |
+        Retorna todas as mensagens de e-mail persistidas no banco MySQL,
+        ordenadas por ID.
+      operationId: listarMensagens
+      responses:
+        '200':
+          description: Lista de mensagens retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RabbitMQModel'
+              example:
+                - id: 1
+                  email: usuario@exemplo.com
+                  nome: "João Silva"
+                  mensagem: "Olá, este é um e-mail de teste."
+                  observacao: "Envio em lote - campanha promocional"
+                  dataMensagem: "2026-06-18T10:30:00"
+                  status: "ENVIADO"
+                - id: 2
+                  email: outro@exemplo.com
+                  nome: "Maria Souza"
+                  mensagem: "Segunda mensagem de teste."
+                  observacao: null
+                  dataMensagem: "2026-06-18T11:00:00"
+                  status: "ENVIADO"
+        '500':
+          description: Erro interno do servidor
+
+components:
+  schemas:
+    RabbitMQDTO:
+      type: object
+      description: DTO de entrada para envio de e-mail
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID gerado automaticamente (não necessário no envio)
+          example: 1
+          readOnly: true
+        email:
+          type: string
+          format: email
+          description: E-mail do destinatário
+          example: usuario@exemplo.com
+        nome:
+          type: string
+          description: Nome do destinatário
+          example: "João Silva"
+        mensagem:
+          type: string
+          description: Conteúdo da mensagem
+          example: "Olá, este é um e-mail de teste."
+        observacao:
+          type: string
+          description: Observação opcional
+          example: "Envio em lote - campanha promocional"
+      required:
+        - email
+        - nome
+        - mensagem
+
+    RabbitMQModel:
+      type: object
+      description: Entidade que representa uma mensagem de e-mail persistida no banco
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID único da mensagem
+          example: 1
+        email:
+          type: string
+          format: email
+          description: E-mail do destinatário
+          example: usuario@exemplo.com
+        nome:
+          type: string
+          description: Nome do destinatário
+          example: "João Silva"
+        mensagem:
+          type: string
+          description: Conteúdo da mensagem
+          example: "Olá, este é um e-mail de teste."
+        observacao:
+          type: string
+          description: Observação opcional
+          example: "Envio em lote"
+        dataMensagem:
+          type: string
+          format: date-time
+          description: Data e hora do envio
+          example: "2026-06-18T10:30:00"
+        status:
+          type: string
+          description: Status da mensagem
+          enum:
+            - ENVIADO
+            - ERRO_ENVIO
+          example: "ENVIADO"
+
+    StatusMensagemDTO:
+      type: object
+      description: DTO de status trafegado na fila RabbitMQ (usado internamente entre produtor e consumidor)
+      properties:
+        rabbitMQModel:
+          $ref: '#/components/schemas/RabbitMQModel'
+        mensagem:
+          type: string
+          description: Mensagem descritiva do status
+          example: "Mensagem enviada com sucesso!"
+        status:
+          type: string
+          description: Status da operação
+          enum:
+            - ENVIADO
+            - ERRO_ENVIO
+          example: "ENVIADO"
+
+    StatusMensagemEnum:
+      type: string
+      description: Enum de status da mensagem
+      enum:
+        - ENVIADO
+        - ERRO_ENVIO

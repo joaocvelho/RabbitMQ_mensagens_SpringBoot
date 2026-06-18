@@ -1,0 +1,163 @@
+{
+  "info": {
+    "name": "RabbitMQ - API de Mensagens",
+    "description": "Collection do Postman para a API de envio de mensagens via RabbitMQ.\n\n## Fluxo da aplicação\n1. **POST /envio-email** → Envia os dados do e-mail para a fila RabbitMQ\n2. **GET /mensagens** → Lista todas as mensagens persistidas no banco MySQL\n\n## Tratamento de Erros\nA API possui handlers globais que capturam:\n- **503** → RabbitMQ indisponível ou falha de conexão\n- **400** → Erro de validação nos campos (DTO inválido)\n- **500** → Erro interno inesperado\n\n## Pré-requisitos\n- Docker com MySQL e RabbitMQ rodando (`docker compose up -d`)\n- Aplicação Spring Boot em execução (`./mvnw spring-boot:run`)\n\n## Variáveis de ambiente\nConfigure as variáveis no Postman:\n- `{{base_url}}` = `http://localhost:8080`",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "opencode"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Mensagens",
+      "description": "Endpoints relacionados ao envio e consulta de mensagens",
+      "item": [
+        {
+          "name": "Enviar E-mail (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"usuario@exemplo.com\",\n  \"nome\": \"João Silva\",\n  \"mensagem\": \"Olá, este é um e-mail de teste enviado via RabbitMQ.\",\n  \"observacao\": \"Envio em lote - campanha promocional\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/envio-email",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["envio-email"]
+            },
+            "description": "Envia uma mensagem de e-mail para a fila RabbitMQ."
+          },
+          "response": [
+            {
+              "name": "Sucesso (201)",
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"email\": \"usuario@exemplo.com\",\n  \"nome\": \"João Silva\",\n  \"mensagem\": \"Olá, este é um e-mail de teste enviado via RabbitMQ.\",\n  \"observacao\": \"Envio em lote - campanha promocional\",\n  \"dataMensagem\": \"2026-06-18T10:30:00\",\n  \"status\": \"ENVIADO\"\n}"
+            },
+            {
+              "name": "Erro de validação (400)",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 400,\n  \"erro\": \"Bad Request\",\n  \"mensagem\": \"Erro de validação nos campos enviados\",\n  \"caminho\": \"/envio-email\",\n  \"errosValidacao\": [\n    {\n      \"campo\": \"email\",\n      \"mensagem\": \"Email não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome\",\n      \"mensagem\": \"Nome não pode estar vazio\"\n    }\n  ]\n}"
+            },
+            {
+              "name": "RabbitMQ indisponível (503)",
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 503,\n  \"erro\": \"Service Unavailable\",\n  \"mensagem\": \"Não foi possível conectar ao RabbitMQ. Verifique se o servidor está em execução.\",\n  \"caminho\": \"/envio-email\"\n}"
+            },
+            {
+              "name": "Falha ao enviar (503)",
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 503,\n  \"erro\": \"Service Unavailable\",\n  \"mensagem\": \"Falha ao enviar mensagem para a fila RabbitMQ: <detalhe_do_erro>\",\n  \"caminho\": \"/envio-email\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Listar Mensagens (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/mensagens",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["mensagens"]
+            },
+            "description": "Retorna todas as mensagens de e-mail persistidas no banco MySQL."
+          },
+          "response": [
+            {
+              "name": "Sucesso (200)",
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1,\n    \"email\": \"usuario@exemplo.com\",\n    \"nome\": \"João Silva\",\n    \"mensagem\": \"Olá, este é um e-mail de teste enviado via RabbitMQ.\",\n    \"observacao\": \"Envio em lote - campanha promocional\",\n    \"dataMensagem\": \"2026-06-18T10:30:00\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 2,\n    \"email\": \"outro@exemplo.com\",\n    \"nome\": \"Maria Souza\",\n    \"mensagem\": \"Segunda mensagem de teste.\",\n    \"observacao\": null,\n    \"dataMensagem\": \"2026-06-18T11:00:00\",\n    \"status\": \"ERRO_ENVIO\"\n  }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infraestrutura",
+      "description": "Endpoints de monitoramento e saúde da aplicação",
+      "item": [
+        {
+          "name": "Swagger UI (Navegador)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/swagger-ui.html",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["swagger-ui.html"]
+            },
+            "description": "Interface gráfica interativa do Swagger (abra no navegador)."
+          }
+        },
+        {
+          "name": "OpenAPI JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api-docs",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api-docs"]
+            },
+            "description": "Especificação OpenAPI 3.0 em formato JSON gerada automaticamente."
+          }
+        }
+      ]
+    }
+  ]
+}
