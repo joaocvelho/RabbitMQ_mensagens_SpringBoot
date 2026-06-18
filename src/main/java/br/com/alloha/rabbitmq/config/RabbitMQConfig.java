@@ -41,7 +41,15 @@ public class RabbitMQConfig {
 
     @Bean
     public MessageConverter conversorMensagem() {
-        return new SimpleMessageConverter(); // SimpleMessageConverter converte automaticamente objetos Java para JSON
+        SimpleMessageConverter converter = new SimpleMessageConverter();
+        converter.addAllowedListPatterns(
+                "br.com.alloha.rabbitmq.dto.*",
+                "br.com.alloha.rabbitmq.model.*",
+                "br.com.alloha.rabbitmq.enums.*",
+                "java.time.*",
+                "java.util.*"
+        );
+        return converter;
     }
 
     @Bean
