@@ -5,6 +5,9 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ rabbitmq ---
+[INFO] Deleting C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\target
+[INFO] 
 [INFO] >>> spring-boot:4.1.0:run (default-cli) > test-compile @ rabbitmq >>>
 [INFO] 
 [INFO] --- resources:3.5.0:resources (default-resources) @ rabbitmq ---
@@ -12,13 +15,15 @@
 [INFO] Copying 2 resources from src\main\resources to target\classes
 [INFO] 
 [INFO] --- compiler:3.15.0:compile (default-compile) @ rabbitmq ---
-[INFO] Nothing to compile - all classes are up to date.
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 17 source files with javac [debug parameters release 17] to target\classes
 [INFO] 
 [INFO] --- resources:3.5.0:testResources (default-testResources) @ rabbitmq ---
 [INFO] skip non existing resourceDirectory C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\src\test\resources
 [INFO] 
 [INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ rabbitmq ---
-[INFO] Nothing to compile - all classes are up to date.
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target\test-classes
 [INFO] 
 [INFO] <<< spring-boot:4.1.0:run (default-cli) < test-compile @ rabbitmq <<<
 [INFO] 
@@ -35,26 +40,26 @@
 
  :: Spring Boot ::                (v4.1.0)
 
-2026-06-18T14:42:11.988-03:00  INFO 14972 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Starting rabbitmqApplication using Java 17.0.12 with PID 14972 (C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\target\classes started by joao.velho in C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq)
-2026-06-18T14:42:11.992-03:00  INFO 14972 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : No active profile set, falling back to 1 default profile: "default"
-2026-06-18T14:42:12.040-03:00  INFO 14972 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-06-18T14:42:12.040-03:00  INFO 14972 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-06-18T14:42:12.070-03:00  INFO 14972 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\Docker-compose.yaml
-2026-06-18T14:42:13.530-03:00  INFO 14972 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : There are already Docker Compose services running, skipping startup
-2026-06-18T14:42:14.332-03:00  INFO 14972 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-06-18T14:42:14.396-03:00  INFO 14972 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 1 JPA repository interface.
-2026-06-18T14:42:15.042-03:00  INFO 14972 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-2026-06-18T14:42:15.060-03:00  INFO 14972 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-06-18T14:42:15.060-03:00  INFO 14972 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
-2026-06-18T14:42:15.107-03:00  INFO 14972 --- [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1566 ms
-2026-06-18T14:42:15.274-03:00  INFO 14972 --- [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-06-18T14:42:15.321-03:00  INFO 14972 --- [  restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
-2026-06-18T14:42:15.734-03:00  INFO 14972 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-06-18T14:42:15.754-03:00  INFO 14972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-06-18T14:42:16.048-03:00  INFO 14972 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7f4cec41
-2026-06-18T14:42:16.050-03:00  INFO 14972 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-06-18T14:42:16.121-03:00  WARN 14972 --- [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-06-18T14:42:16.138-03:00  INFO 14972 --- [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-06-18T17:40:29.636-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Starting rabbitmqApplication using Java 17.0.12 with PID 16760 (C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\target\classes started by joao.velho in C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq)
+2026-06-18T17:40:29.640-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-18T17:40:29.698-03:00  INFO 16760 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-18T17:40:29.698-03:00  INFO 16760 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-18T17:40:29.728-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\Docker-compose.yaml
+2026-06-18T17:40:31.506-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : There are already Docker Compose services running, skipping startup
+2026-06-18T17:40:32.380-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-18T17:40:32.441-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interface.
+2026-06-18T17:40:33.195-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-18T17:40:33.212-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-18T17:40:33.212-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-18T17:40:33.281-03:00  INFO 16760 --- [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1761 ms
+2026-06-18T17:40:33.484-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-18T17:40:33.579-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-06-18T17:40:34.095-03:00  INFO 16760 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-18T17:40:34.133-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-18T17:40:34.576-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1990bc90
+2026-06-18T17:40:34.578-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-18T17:40:34.640-03:00  WARN 16760 --- [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-18T17:40:34.661-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [jdbc:mysql://127.0.0.1:3306/rabbitmq_db]
 	Database driver: MySQL Connector/J
 	Database dialect: MySQLDialect
@@ -66,11 +71,253 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-06-18T14:42:17.045-03:00  INFO 14972 --- [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-06-18T14:42:17.112-03:00  INFO 14972 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-06-18T14:42:17.209-03:00  INFO 14972 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-06-18T14:42:17.506-03:00  WARN 14972 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-06-18T14:42:18.112-03:00  INFO 14972 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
-2026-06-18T14:42:18.122-03:00  INFO 14972 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
-2026-06-18T14:42:18.170-03:00  INFO 14972 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#16e3802:0/SimpleConnection@1fba9e41 [delegate=amqp://adminrbtmq@127.0.0.1:5672/, localPort=64898]
-2026-06-18T14:42:18.242-03:00  INFO 14972 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Started rabbitmqApplication in 6.706 seconds (process running for 7.303)
+2026-06-18T17:40:35.748-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-18T17:40:35.838-03:00  INFO 16760 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-18T17:40:35.929-03:00  INFO 16760 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-18T17:40:36.311-03:00  WARN 16760 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-18T17:40:37.028-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-18T17:40:37.028-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:40:37.082-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2d06b0ca:0/SimpleConnection@102a3806 [delegate=amqp://adminrbtmq@127.0.0.1:5672/, localPort=63948]
+2026-06-18T17:40:37.173-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Started rabbitmqApplication in 8.029 seconds (process running for 8.64)
+2026-06-18T17:40:37.176-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-06-18T17:40:37.176-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-06-18T17:43:06.556-03:00  INFO 16760 --- [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18T17:43:06.556-03:00  INFO 16760 --- [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-18T17:43:06.556-03:00  INFO 16760 --- [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Hibernate: insert into tb_fila_mensagem (data_mensagem,email,mensagem,nome,observacao,status) values (?,?,?,?,?,?)
+Mensagem recebida da fila: StatusMensagemDTO(rabbitMQModel=RabbitMQModel(id=16, email=joao.velho@exemplo.com, nome=João Velho, mensagem=Criando projetos no trabalho de desenvolvimento, observacao=Enviar portfólio no grupo, dataMensagem=2026-06-18T17:43:06.808153700, status=ENVIADO), mensagem=Mensagem enviada com sucesso!, status=ENVIADO)
+2026-06-18T17:43:30.353-03:00  INFO 16760 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 23 class path changes (0 additions, 20 deletions, 3 modifications)
+2026-06-18T17:43:30.368-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-06-18T17:43:31.131-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-06-18T17:43:31.132-03:00  INFO 16760 --- [       Thread-1] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18T17:43:31.979-03:00  INFO 16760 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-18T17:43:33.090-03:00  INFO 16760 --- [       Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-18T17:43:33.095-03:00  INFO 16760 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-18T17:43:33.109-03:00  INFO 16760 --- [       Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-06-18T17:43:33.227-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Starting rabbitmqApplication using Java 17.0.12 with PID 16760 (C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\target\classes started by joao.velho in C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq)
+2026-06-18T17:43:33.228-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-18T17:43:33.237-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\Docker-compose.yaml
+2026-06-18T17:43:34.430-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : There are already Docker Compose services running, skipping startup
+2026-06-18T17:43:34.903-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-18T17:43:34.939-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interface.
+2026-06-18T17:43:35.152-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-18T17:43:35.154-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-18T17:43:35.155-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-18T17:43:35.212-03:00  INFO 16760 --- [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 780 ms
+2026-06-18T17:43:35.285-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-18T17:43:35.337-03:00  INFO 16760 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-18T17:43:35.339-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-06-18T17:43:35.380-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3990137f
+2026-06-18T17:43:35.380-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-06-18T17:43:35.383-03:00  WARN 16760 --- [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-18T17:43:35.386-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://127.0.0.1:3306/rabbitmq_db]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: rabbitmq_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-18T17:43:35.459-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-18T17:43:35.483-03:00  INFO 16760 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-18T17:43:35.687-03:00  WARN 16760 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-18T17:43:36.028-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-18T17:43:36.030-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:43:36.040-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4b0fbc57:0/SimpleConnection@69ee189a [delegate=amqp://adminrbtmq@127.0.0.1:5672/, localPort=55274]
+2026-06-18T17:43:36.076-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Started rabbitmqApplication in 2.884 seconds (process running for 187.543)
+2026-06-18T17:43:36.078-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-06-18T17:43:36.078-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-06-18T17:43:36.080-03:00  INFO 16760 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-06-18T17:43:37.444-03:00  INFO 16760 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 20 class path changes (20 additions, 0 deletions, 0 modifications)
+2026-06-18T17:43:37.449-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-06-18T17:43:38.096-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-06-18T17:43:38.096-03:00  INFO 16760 --- [      Thread-17] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-18T17:43:39.078-03:00  INFO 16760 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-06-18T17:43:40.180-03:00  INFO 16760 --- [      Thread-17] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-18T17:43:40.181-03:00  INFO 16760 --- [      Thread-17] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-06-18T17:43:40.189-03:00  INFO 16760 --- [      Thread-17] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-06-18T17:43:40.280-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Starting rabbitmqApplication using Java 17.0.12 with PID 16760 (C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\target\classes started by joao.velho in C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq)
+2026-06-18T17:43:40.280-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : No active profile set, falling back to 1 default profile: "default"
+2026-06-18T17:43:40.285-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file C:\Users\joao.velho\Desktop\Projeto RabbitMQ\rabbitmq\rabbitmq\Docker-compose.yaml
+2026-06-18T17:43:41.122-03:00  INFO 16760 --- [  restartedMain] .s.b.d.c.l.DockerComposeLifecycleManager : There are already Docker Compose services running, skipping startup
+2026-06-18T17:43:41.397-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-18T17:43:41.412-03:00  INFO 16760 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2026-06-18T17:43:41.546-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-06-18T17:43:41.547-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-18T17:43:41.548-03:00  INFO 16760 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-06-18T17:43:41.585-03:00  INFO 16760 --- [  restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 462 ms
+2026-06-18T17:43:41.639-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-18T17:43:41.689-03:00  INFO 16760 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-18T17:43:41.690-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-06-18T17:43:41.713-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6bae0a4c
+2026-06-18T17:43:41.714-03:00  INFO 16760 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-06-18T17:43:41.716-03:00  WARN 16760 --- [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-18T17:43:41.728-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://127.0.0.1:3306/rabbitmq_db]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: rabbitmq_db/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-18T17:43:41.810-03:00  INFO 16760 --- [  restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-18T17:43:41.840-03:00  INFO 16760 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-18T17:43:42.013-03:00  WARN 16760 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-18T17:43:42.243-03:00  INFO 16760 --- [  restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-06-18T17:43:42.244-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:43:42.252-03:00  INFO 16760 --- [  restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#2d3ccbc:0/SimpleConnection@3c81f897 [delegate=amqp://adminrbtmq@127.0.0.1:5672/, localPort=59748]
+2026-06-18T17:43:42.278-03:00  INFO 16760 --- [  restartedMain] b.c.alloha.rabbitmq.rabbitmqApplication  : Started rabbitmqApplication in 2.026 seconds (process running for 193.745)
+2026-06-18T17:43:42.279-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-06-18T17:43:42.280-03:00  WARN 16760 --- [  restartedMain] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-06-18T17:43:42.281-03:00  INFO 16760 --- [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-06-18T17:45:03.081-03:00  INFO 16760 --- [nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-18T17:45:03.081-03:00  INFO 16760 --- [nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-18T17:45:03.081-03:00  INFO 16760 --- [nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+Hibernate: select rm1_0.id,rm1_0.data_mensagem,rm1_0.email,rm1_0.mensagem,rm1_0.nome,rm1_0.observacao,rm1_0.status from tb_fila_mensagem rm1_0
+2026-06-18T17:45:58.209-03:00  INFO 16760 --- [nio-8081-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 514 ms
+Hibernate: select rm1_0.id,rm1_0.data_mensagem,rm1_0.email,rm1_0.mensagem,rm1_0.nome,rm1_0.observacao,rm1_0.status from tb_fila_mensagem rm1_0
+2026-06-18T17:57:16.501-03:00  WARN 16760 --- [ntContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+com.rabbitmq.client.ShutdownSignalException: connection error; protocol method: #method<connection.close>(reply-code=320, reply-text=CONNECTION_FORCED - broker forced connection closure with reason 'shutdown', class-id=0, method-id=0)
+	at com.rabbitmq.client.impl.AMQConnection.startShutdown(AMQConnection.java:1014) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.shutdown(AMQConnection.java:1004) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.handleConnectionClose(AMQConnection.java:942) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.processControlCommand(AMQConnection.java:897) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection$1.processAsync(AMQConnection.java:276) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel.handleCompleteInboundCommand(AMQChannel.java:193) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel.handleFrame(AMQChannel.java:125) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:748) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.access$400(AMQConnection.java:49) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:695) ~[amqp-client-5.30.0.jar:5.30.0]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2026-06-18T17:57:16.508-03:00  INFO 16760 --- [ntContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@7ed72091: tags=[[amq.ctag-hVwcZz8jDvgnHSlNmyqQMg]], channel=Cached Rabbit Channel: AMQChannel(amqp://adminrbtmq@127.0.0.1:5672/,1), conn: Proxy@78f8c2c3 Shared Rabbit Connection: SimpleConnection@3c81f897 [delegate=amqp://adminrbtmq@127.0.0.1:5672/, localPort=59748], acknowledgeMode=AUTO local queue size=0
+2026-06-18T17:57:16.510-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:16.520-03:00 ERROR 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2239) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2211) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2191) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:472) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:456) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1972) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1935) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1602) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1400) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.30.0.jar:5.30.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.30.0.jar:5.30.0]
+	... 17 common frames omitted
+Caused by: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.30.0.jar:5.30.0]
+	... 1 common frames omitted
+
+2026-06-18T17:57:16.521-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:21.729-03:00  WARN 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:69) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:629) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:746) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:256) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils$RabbitResourceFactory.createConnection(ConnectionFactoryUtils.java:330) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.doGetTransactionalResourceHolder(ConnectionFactoryUtils.java:139) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:100) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.getTransactionalResourceHolder(ConnectionFactoryUtils.java:83) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.BlockingQueueConsumer.start(BlockingQueueConsumer.java:630) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1603) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1400) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+Caused by: java.io.IOException
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:140) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:136) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:414) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1357) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1297) ~[amqp-client-5.30.0.jar:5.30.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:676) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:644) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:590) ~[spring-rabbit-4.1.0.jar:4.1.0]
+	... 10 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:552) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:341) ~[amqp-client-5.30.0.jar:5.30.0]
+	... 15 common frames omitted
+Caused by: java.io.EOFException
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:92) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:199) ~[amqp-client-5.30.0.jar:5.30.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:694) ~[amqp-client-5.30.0.jar:5.30.0]
+	... 1 common frames omitted
+
+2026-06-18T17:57:21.733-03:00  INFO 16760 --- [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@6b926971: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-06-18T17:57:21.736-03:00  INFO 16760 --- [ntContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:21.742-03:00 ERROR 16760 --- [ntContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-06-18T17:57:21.743-03:00  INFO 16760 --- [ntContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:25.028-03:00  WARN 16760 --- [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6bae0a4c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-18T17:57:26.918-03:00  WARN 16760 --- [ntContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2026-06-18T17:57:26.919-03:00  INFO 16760 --- [ntContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@43182e82: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-06-18T17:57:26.921-03:00  INFO 16760 --- [ntContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:26.922-03:00 ERROR 16760 --- [ntContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-06-18T17:57:26.922-03:00  INFO 16760 --- [ntContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:31.081-03:00  WARN 16760 --- [l-3:housekeeper] com.zaxxer.hikari.pool.PoolBase          : HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@16e9eeb5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2026-06-18T17:57:32.118-03:00  WARN 16760 --- [ntContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2026-06-18T17:57:32.118-03:00  INFO 16760 --- [ntContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@5e3f6f26: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-06-18T17:57:32.118-03:00  INFO 16760 --- [ntContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:32.118-03:00 ERROR 16760 --- [ntContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-06-18T17:57:32.118-03:00  INFO 16760 --- [ntContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:37.340-03:00  WARN 16760 --- [ntContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Consumer raised exception, processing can restart if the connection factory supports it. Exception summary: org.springframework.amqp.AmqpConnectException: java.net.ConnectException: Connection refused: no further information
+2026-06-18T17:57:37.341-03:00  INFO 16760 --- [ntContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@19e428ab: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2026-06-18T17:57:37.343-03:00  INFO 16760 --- [ntContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2026-06-18T17:57:37.344-03:00 ERROR 16760 --- [ntContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+2026-06-18T17:57:37.344-03:00  INFO 16760 --- [ntContainer#0-6] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]

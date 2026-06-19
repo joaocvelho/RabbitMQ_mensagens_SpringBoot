@@ -26,12 +26,21 @@ public class RabbitMQModel implements Serializable {
 
     @NotBlank
     @Email
-    @Schema(description = "E-mail do destinatário", example = "usuario@exemplo.com")
+    @Schema(description = "E-mail do remetente", example = "usuario@exemplo.com")
     private String email;
 
     @NotBlank
-    @Schema(description = "Nome do destinatário", example = "João Silva")
+    @Schema(description = "Nome do remetente", example = "João Silva")
     private String nome;
+
+    @NotBlank
+    @Email
+    @Schema(description = "E-mail do destinatário", example = "usuario@exemplo.com")
+    private String email_destinatario;
+
+    @NotBlank
+    @Schema(description = "Nome do destinatário", example = "João Silva")
+    private String nome_destinatario;
 
     @NotBlank
     @Schema(description = "Conteúdo da mensagem", example = "Olá, este é um e-mail de teste.")

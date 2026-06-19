@@ -29,7 +29,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"joao.velho@exemplo.com\",\n  \"nome\": \"João Velho\",\n  \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n  \"observacao\": \"Enviar portfólio no grupo\"\n}",
+              "raw": "{\n  \"email\": \"joao.velho@exemplo.com\",\n  \"nome\": \"João Velho\",\n  \"email_destinatario\": \"maria.santos@exemplo.com\",\n  \"nome_destinatario\": \"Maria Santos\",\n  \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n  \"observacao\": \"Enviar portfólio no grupo\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -55,7 +55,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": 5,\n  \"email\": \"joao.velho@exemplo.com\",\n  \"nome\": \"João Velho\",\n  \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n  \"observacao\": \"Enviar portfólio no grupo\",\n  \"dataMensagem\": \"2026-06-18T14:44:07\",\n  \"status\": \"ENVIADO\"\n}"
+              "body": "{\n  \"id\": 5,\n  \"email\": \"joao.velho@exemplo.com\",\n  \"nome\": \"João Velho\",\n  \"email_destinatario\": \"maria.santos@exemplo.com\",\n  \"nome_destinatario\": \"Maria Santos\",\n  \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n  \"observacao\": \"Enviar portfólio no grupo\",\n  \"dataMensagem\": \"2026-06-18T14:44:07\",\n  \"status\": \"ENVIADO\"\n}"
             },
             {
               "name": "Erro de validação (400)",
@@ -67,7 +67,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 400,\n  \"erro\": \"Bad Request\",\n  \"mensagem\": \"Erro de validação nos campos enviados\",\n  \"caminho\": \"/envio-email\",\n  \"errosValidacao\": [\n    {\n      \"campo\": \"email\",\n      \"mensagem\": \"Email não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome\",\n      \"mensagem\": \"Nome não pode estar vazio\"\n    }\n  ]\n}"
+              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 400,\n  \"erro\": \"Bad Request\",\n  \"mensagem\": \"Erro de validação nos campos enviados\",\n  \"caminho\": \"/envio-email\",\n  \"errosValidacao\": [\n    {\n      \"campo\": \"email\",\n      \"mensagem\": \"Email do remetente não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome\",\n      \"mensagem\": \"Nome do remetente não pode estar vazio\"\n    },\n    {\n      \"campo\": \"email_destinatario\",\n      \"mensagem\": \"Email do destinatário não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome_destinatario\",\n      \"mensagem\": \"Nome do destinatário não pode estar vazio\"\n    }\n  ]\n}"
             },
             {
               "name": "RabbitMQ indisponível (503)",
@@ -119,7 +119,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 4,\n    \"email\": \"mariasantos@exemplo.com\",\n    \"nome\": \"Maria Santos\",\n    \"mensagem\": \"Estou aprendendo enviar mensagem pelo RabbitMQ\",\n    \"observacao\": \"Sem copia\",\n    \"dataMensagem\": \"2026-06-18T14:43:01\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 5,\n    \"email\": \"joao.velho@exemplo.com\",\n    \"nome\": \"João Velho\",\n    \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n    \"observacao\": \"Enviar portfólio no grupo\",\n    \"dataMensagem\": \"2026-06-18T14:44:07\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 6,\n    \"email\": \"bruno.montezano@exemplo.com\",\n    \"nome\": \"Bruno Montezano\",\n    \"mensagem\": \"Criando card para subir na pipeline\",\n    \"observacao\": \"Criar card de 50 h\",\n    \"dataMensagem\": \"2026-06-18T14:45:25\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 7,\n    \"email\": \"lucas.auada@exemplo.com\",\n    \"nome\": \"Lucas Auda\",\n    \"mensagem\": \"Criando front end para Air comercial\",\n    \"observacao\": \"Compartilhar com Epitácio\",\n    \"dataMensagem\": \"2026-06-18T14:50:04\",\n    \"status\": \"ENVIADO\"\n  }\n]"
+              "body": "[\n  {\n    \"id\": 4,\n    \"email\": \"joao.velho@exemplo.com\",\n    \"nome\": \"João Velho\",\n    \"email_destinatario\": \"mariasantos@exemplo.com\",\n    \"nome_destinatario\": \"Maria Santos\",\n    \"mensagem\": \"Estou aprendendo enviar mensagem pelo RabbitMQ\",\n    \"observacao\": \"Sem copia\",\n    \"dataMensagem\": \"2026-06-18T14:43:01\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 5,\n    \"email\": \"joao.velho@exemplo.com\",\n    \"nome\": \"João Velho\",\n    \"email_destinatario\": \"maria.santos@exemplo.com\",\n    \"nome_destinatario\": \"Maria Santos\",\n    \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n    \"observacao\": \"Enviar portfólio no grupo\",\n    \"dataMensagem\": \"2026-06-18T14:44:07\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 6,\n    \"email\": \"bruno.montezano@exemplo.com\",\n    \"nome\": \"Bruno Montezano\",\n    \"email_destinatario\": \"jose.souza@exemplo.com\",\n    \"nome_destinatario\": \"José Souza\",\n    \"mensagem\": \"Criando card para subir na pipeline\",\n    \"observacao\": \"Criar card de 50 h\",\n    \"dataMensagem\": \"2026-06-18T14:45:25\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 7,\n    \"email\": \"lucas.auada@exemplo.com\",\n    \"nome\": \"Lucas Auda\",\n    \"email_destinatario\": \"epitacio@exemplo.com\",\n    \"nome_destinatario\": \"Epitácio\",\n    \"mensagem\": \"Criando front end para Air comercial\",\n    \"observacao\": \"Compartilhar com Epitácio\",\n    \"dataMensagem\": \"2026-06-18T14:50:04\",\n    \"status\": \"ENVIADO\"\n  }\n]"
             }
           ]
         }
