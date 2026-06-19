@@ -41,6 +41,6 @@ public class RabbitMQService {
     }
 
     public List<RabbitMQModel> listarMensagens() {
-        return rabbitMQRepository.findAll();
+        return rabbitMQRepository.findAllByOrderByIdDesc();
     }
 }
