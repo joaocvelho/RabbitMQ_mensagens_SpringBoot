@@ -24,25 +24,25 @@ public class RabbitMQModel implements Serializable {
     @Schema(description = "ID único da mensagem", example = "1")
     private Long id;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Preencher os campos obrigatórios")
+    @Email(message = "Preencher os campos obrigatórios")
     @Schema(description = "E-mail do remetente", example = "usuario@exemplo.com")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Preencher os campos obrigatórios")
     @Schema(description = "Nome do remetente", example = "João Silva")
     private String nome;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Preencher os campos obrigatórios")
+    @Email(message = "Preencher os campos obrigatórios")
     @Schema(description = "E-mail do destinatário", example = "usuario@exemplo.com")
     private String email_destinatario;
 
-    @NotBlank
+    @NotBlank(message = "Preencher os campos obrigatórios")
     @Schema(description = "Nome do destinatário", example = "João Silva")
     private String nome_destinatario;
 
-    @NotBlank
+    @NotBlank(message = "Preencher os campos obrigatórios")
     @Schema(description = "Conteúdo da mensagem", example = "Olá, este é um e-mail de teste.")
     private String mensagem;
 
