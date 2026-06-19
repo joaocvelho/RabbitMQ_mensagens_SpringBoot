@@ -67,7 +67,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 400,\n  \"erro\": \"Bad Request\",\n  \"mensagem\": \"Erro de validação nos campos enviados\",\n  \"caminho\": \"/envio-email\",\n  \"errosValidacao\": [\n    {\n      \"campo\": \"email\",\n      \"mensagem\": \"Email do remetente não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome\",\n      \"mensagem\": \"Nome do remetente não pode estar vazio\"\n    },\n    {\n      \"campo\": \"email_destinatario\",\n      \"mensagem\": \"Email do destinatário não pode estar vazio\"\n    },\n    {\n      \"campo\": \"nome_destinatario\",\n      \"mensagem\": \"Nome do destinatário não pode estar vazio\"\n    }\n  ]\n}"
+              "body": "{\n  \"timestamp\": \"2026-06-18T12:00:00\",\n  \"status\": 400,\n  \"erro\": \"Bad Request\",\n  \"mensagem\": \"Erro de validação nos campos enviados\",\n  \"caminho\": \"/envio-email\",\n  \"errosValidacao\": [\n    {\n      \"campo\": \"email\",\n      \"mensagem\": \"Preencher os campos obrigatórios\"\n    },\n    {\n      \"campo\": \"nome\",\n      \"mensagem\": \"Preencher os campos obrigatórios\"\n    },\n    {\n      \"campo\": \"email_destinatario\",\n      \"mensagem\": \"Preencher os campos obrigatórios\"\n    },\n    {\n      \"campo\": \"nome_destinatario\",\n      \"mensagem\": \"Preencher os campos obrigatórios\"\n    },\n    {\n      \"campo\": \"mensagem\",\n      \"mensagem\": \"Preencher os campos obrigatórios\"\n    }\n  ]\n}"
             },
             {
               "name": "RabbitMQ indisponível (503)",
