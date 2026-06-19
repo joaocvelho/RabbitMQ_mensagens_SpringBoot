@@ -39,7 +39,7 @@
             "url": {
               "raw": "{{base_url}}/envio-email",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8081",
               "path": ["envio-email"]
             },
             "description": "Envia uma mensagem de e-mail para a fila RabbitMQ."
@@ -103,7 +103,7 @@
             "url": {
               "raw": "{{base_url}}/mensagens",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8081",
               "path": ["mensagens"]
             },
             "description": "Retorna todas as mensagens de e-mail persistidas no banco MySQL."
@@ -137,7 +137,7 @@
             "url": {
               "raw": "{{base_url}}/swagger-ui.html",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8081",
               "path": ["swagger-ui.html"]
             },
             "description": "Interface gráfica interativa do Swagger (abra no navegador)."
@@ -151,7 +151,7 @@
             "url": {
               "raw": "{{base_url}}/api-docs",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8081",
               "path": ["api-docs"]
             },
             "description": "Especificação OpenAPI 3.0 em formato JSON gerada automaticamente."
