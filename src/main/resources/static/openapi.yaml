@@ -28,7 +28,7 @@ info:
     url: https://opensource.org/licenses/MIT
 
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:8081
     description: Servidor local de desenvolvimento
 
 tags:
@@ -52,9 +52,11 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RabbitMQDTO'
-            example:
-              email: usuario@exemplo.com
-              nome: "João Silva"
+              example:
+              email: joao.velho@exemplo.com
+              nome: "João Velho"
+              email_destinatario: maria.santos@exemplo.com
+              nome_destinatario: "Maria Santos"
               mensagem: "Olá, este é um e-mail de teste."
               observacao: "Envio em lote - campanha promocional"
       responses:
@@ -66,8 +68,10 @@ paths:
                 $ref: '#/components/schemas/RabbitMQModel'
               example:
                 id: 1
-                email: usuario@exemplo.com
-                nome: "João Silva"
+                email: joao.velho@exemplo.com
+                nome: "João Velho"
+                email_destinatario: maria.santos@exemplo.com
+                nome_destinatario: "Maria Santos"
                 mensagem: "Olá, este é um e-mail de teste."
                 observacao: "Envio em lote - campanha promocional"
                 dataMensagem: "2026-06-18T10:30:00"
@@ -112,7 +116,7 @@ paths:
       summary: Listar todas as mensagens
       description: |
         Retorna todas as mensagens de e-mail persistidas no banco MySQL,
-        ordenadas por ID.
+        ordenadas por ID decrescente (mais recente primeiro).
       operationId: listarMensagens
       responses:
         '200':
@@ -124,19 +128,23 @@ paths:
                 items:
                   $ref: '#/components/schemas/RabbitMQModel'
               example:
-                - id: 1
-                  email: usuario@exemplo.com
-                  nome: "João Silva"
-                  mensagem: "Olá, este é um e-mail de teste."
-                  observacao: "Envio em lote - campanha promocional"
-                  dataMensagem: "2026-06-18T10:30:00"
-                  status: "ENVIADO"
                 - id: 2
-                  email: outro@exemplo.com
-                  nome: "Maria Souza"
+                  email: joao.velho@exemplo.com
+                  nome: "João Velho"
+                  email_destinatario: maria.santos@exemplo.com
+                  nome_destinatario: "Maria Santos"
                   mensagem: "Segunda mensagem de teste."
                   observacao: null
                   dataMensagem: "2026-06-18T11:00:00"
+                  status: "ENVIADO"
+                - id: 1
+                  email: usuario@exemplo.com
+                  nome: "João Silva"
+                  email_destinatario: jose.souza@exemplo.com
+                  nome_destinatario: "José Souza"
+                  mensagem: "Olá, este é um e-mail de teste."
+                  observacao: "Envio em lote - campanha promocional"
+                  dataMensagem: "2026-06-18T10:30:00"
                   status: "ENVIADO"
         '500':
           description: Erro interno do servidor
@@ -156,12 +164,21 @@ components:
         email:
           type: string
           format: email
-          description: E-mail do destinatário
-          example: usuario@exemplo.com
+          description: E-mail do remetente
+          example: joao.velho@exemplo.com
         nome:
           type: string
+          description: Nome do remetente
+          example: "João Velho"
+        email_destinatario:
+          type: string
+          format: email
+          description: E-mail do destinatário
+          example: maria.santos@exemplo.com
+        nome_destinatario:
+          type: string
           description: Nome do destinatário
-          example: "João Silva"
+          example: "Maria Santos"
         mensagem:
           type: string
           description: Conteúdo da mensagem
@@ -169,10 +186,12 @@ components:
         observacao:
           type: string
           description: Observação opcional
-          example: "Envio em lote - campanha promocional"
+          example: "Envio para todos"
       required:
         - email
         - nome
+        - email_destinatario
+        - nome_destinatario
         - mensagem
 
     RabbitMQModel:
@@ -187,12 +206,21 @@ components:
         email:
           type: string
           format: email
-          description: E-mail do destinatário
-          example: usuario@exemplo.com
+          description: E-mail do remetente
+          example: joao.velho@exemplo.com
         nome:
           type: string
+          description: Nome do remetente
+          example: "João Velho"
+        email_destinatario:
+          type: string
+          format: email
+          description: E-mail do destinatário
+          example: maria.santos@exemplo.com
+        nome_destinatario:
+          type: string
           description: Nome do destinatário
-          example: "João Silva"
+          example: "Maria Santos"
         mensagem:
           type: string
           description: Conteúdo da mensagem
