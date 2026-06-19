@@ -10,11 +10,9 @@ spring:
 
   jpa:
     show-sql: true
+    open-in-view: false
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
 
   rabbitmq:
     host: localhost
@@ -22,10 +20,21 @@ spring:
     username: adminrbtmq
     password: rabbitmq
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
 springdoc:
   api-docs:
+    enabled: true
     path: /api-docs
   swagger-ui:
+    enabled: true
     path: /swagger-ui.html
     operations-sorter: method
     tags-sorter: alpha

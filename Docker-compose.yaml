@@ -14,6 +14,7 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=adminrbtmq
       - RABBITMQ_DEFAULT_PASS=rabbitmq
+      - NGROK_AUTHTOKEN=3FMdaKLPergHncD9ogmQtPDzNBn_3L9cPjSb75FNZQmFsa87w
     ports:
       - 5672:5672
       - 15672:15672

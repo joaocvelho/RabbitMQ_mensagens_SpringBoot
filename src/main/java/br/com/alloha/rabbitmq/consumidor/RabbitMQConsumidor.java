@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMQConsumidor {
 
-    // RabbitListener irá ouvir a fila em tempo real, verificando quando chega nova mensagem
     @RabbitListener(queues = RabbitMQConfig.FILA)
     public void consumirMensagem(@Payload StatusMensagemDTO statusMensagemDTO) {
         System.out.println("Mensagem recebida da fila: " + statusMensagemDTO);
