@@ -25,13 +25,13 @@ public class RabbitMQDTO {
     private String email;
 
     @NotBlank
-    @Schema(description = "Nome do destinatário", example = "João Silva", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "Nome do destinatário", example = "José Souza", requiredMode = Schema.RequiredMode.REQUIRED)
     private String nome;
 
     @NotBlank
     @Schema(description = "Conteúdo da mensagem", example = "Olá, este é um e-mail de teste.", requiredMode = Schema.RequiredMode.REQUIRED)
     private String mensagem;
 
-    @Schema(description = "Observação opcional", example = "Envio em lote - campanha promocional")
+    @Schema(description = "Observação opcional", example = "Envio para todos")
     private String observacao;
 }
