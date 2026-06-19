@@ -1,14 +1,16 @@
 package br.com.alloha.rabbitmq.config;
 
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.amqp.support.converter.SimpleMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@EnableRabbit
 @Configuration
 public class RabbitMQConfig {
 
@@ -19,12 +21,6 @@ public class RabbitMQConfig {
     @Bean
     public Queue fila() {        
         return new Queue(FILA);
-    }
-
-    @Bean
-    // Declara automaticamente e gerencia os componentes no RabbitMQ (filas, exchanges e bindings)
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {        
-        return new RabbitAdmin(connectionFactory);
     }
 
     @Bean
@@ -46,6 +42,7 @@ public class RabbitMQConfig {
                 "br.com.alloha.rabbitmq.dto.*",
                 "br.com.alloha.rabbitmq.model.*",
                 "br.com.alloha.rabbitmq.enums.*",
+                "java.lang.*",
                 "java.time.*",
                 "java.util.*"
         );
@@ -58,5 +55,14 @@ public class RabbitMQConfig {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(conversorMensagem());
         return rabbitTemplate;
+    }
+
+    @Bean
+    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(
+            ConnectionFactory connectionFactory, MessageConverter messageConverter) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setMessageConverter(messageConverter);
+        return factory;
     }
 }
