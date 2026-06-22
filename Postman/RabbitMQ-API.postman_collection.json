@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "RabbitMQ - API de Mensagens",
-    "description": "Collection do Postman para a API de envio de mensagens via RabbitMQ.\n\n## Fluxo da aplicação\n1. **POST /envio-email** → Envia os dados do e-mail para a fila RabbitMQ\n2. **GET /mensagens** → Lista todas as mensagens persistidas no banco MySQL\n\n## Tratamento de Erros\nA API possui handlers globais que capturam:\n- **503** → RabbitMQ indisponível ou falha de conexão\n- **400** → Erro de validação nos campos (DTO inválido)\n- **500** → Erro interno inesperado\n\n## Pré-requisitos\n- Docker com MySQL e RabbitMQ rodando (`docker compose up -d`)\n- Aplicação Spring Boot em execução (`./mvnw spring-boot:run`)\n\n## Variáveis de ambiente\nConfigure as variáveis no Postman:\n- `{{base_url}}` = `http://localhost:8081`",
+    "description": "Collection do Postman para a API de envio de mensagens via RabbitMQ.\n\n## Fluxo da aplicação\n1. **POST /envio-email** → Envia os dados do e-mail para a fila RabbitMQ\n2. **GET /mensagens** → Lista mensagens com paginação (?page=0&size=20)\n\n## Tratamento de Erros\nA API possui handlers globais que capturam:\n- **503** → RabbitMQ indisponível ou falha de conexão\n- **400** → Erro de validação nos campos (DTO inválido)\n- **500** → Erro interno inesperado\n\n## Pré-requisitos\n- Docker com MySQL e RabbitMQ rodando (`docker compose up -d`)\n- Aplicação Spring Boot em execução (`./mvnw spring-boot:run`)\n\n## Variáveis de ambiente\nConfigure as variáveis no Postman:\n- `{{base_url}}` = `http://localhost:8081`",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "opencode"
   },
@@ -101,12 +101,24 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/mensagens",
+              "raw": "{{base_url}}/mensagens?page=0&size=20",
               "host": ["localhost"],
               "port": "8081",
-              "path": ["mensagens"]
+              "path": ["mensagens"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "Número da página (começa em 0)"
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Quantidade de registros por página"
+                }
+              ]
             },
-            "description": "Retorna todas as mensagens de e-mail persistidas no banco MySQL."
+            "description": "Retorna mensagens de e-mail persistidas no banco MySQL com paginação. Use page para navegar e size para controlar a quantidade."
           },
           "response": [
             {
@@ -119,7 +131,7 @@
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": 4,\n    \"email\": \"joao.velho@exemplo.com\",\n    \"nome\": \"João Velho\",\n    \"email_destinatario\": \"mariasantos@exemplo.com\",\n    \"nome_destinatario\": \"Maria Santos\",\n    \"mensagem\": \"Estou aprendendo enviar mensagem pelo RabbitMQ\",\n    \"observacao\": \"Sem copia\",\n    \"dataMensagem\": \"2026-06-18T14:43:01\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 5,\n    \"email\": \"joao.velho@exemplo.com\",\n    \"nome\": \"João Velho\",\n    \"email_destinatario\": \"maria.santos@exemplo.com\",\n    \"nome_destinatario\": \"Maria Santos\",\n    \"mensagem\": \"Criando projetos no trabalho de desenvolvimento\",\n    \"observacao\": \"Enviar portfólio no grupo\",\n    \"dataMensagem\": \"2026-06-18T14:44:07\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 6,\n    \"email\": \"bruno.montezano@exemplo.com\",\n    \"nome\": \"Bruno Montezano\",\n    \"email_destinatario\": \"jose.souza@exemplo.com\",\n    \"nome_destinatario\": \"José Souza\",\n    \"mensagem\": \"Criando card para subir na pipeline\",\n    \"observacao\": \"Criar card de 50 h\",\n    \"dataMensagem\": \"2026-06-18T14:45:25\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 7,\n    \"email\": \"lucas.auada@exemplo.com\",\n    \"nome\": \"Lucas Auda\",\n    \"email_destinatario\": \"epitacio@exemplo.com\",\n    \"nome_destinatario\": \"Epitácio\",\n    \"mensagem\": \"Criando front end para Air comercial\",\n    \"observacao\": \"Compartilhar com Epitácio\",\n    \"dataMensagem\": \"2026-06-18T14:50:04\",\n    \"status\": \"ENVIADO\"\n  }\n]"
+              "body": "[\n  {\n    \"id\": 6475,\n    \"email\": \"priscila@exemplo.com\",\n    \"nome\": \"Priscila\",\n    \"email_destinatario\": \"ronaldo@exemplo.com\",\n    \"nome_destinatario\": \"Ronaldo\",\n    \"mensagem\": \"Atualização dos parceiros de negócio\",\n    \"observacao\": \"Novos patrocinios e aumento de budget\",\n    \"dataMensagem\": \"2026-06-22T10:53:13.518106\",\n    \"status\": \"ENVIADO\"\n  },\n  {\n    \"id\": 6474,\n    \"email\": \"bruno.montezano@exemplo.com\",\n    \"nome\": \"Bruno Montezano\",\n    \"email_destinatario\": \"nicholas@exemplo.com\",\n    \"nome_destinatario\": \"Nicholas\",\n    \"mensagem\": \"Criação de novos motivos no air comercial e logística\",\n    \"observacao\": \"Subir 5 motivos e submotivos no Air comercial\",\n    \"dataMensagem\": \"2026-06-22T10:47:10.259951\",\n    \"status\": \"ENVIADO\"\n  }\n]"
             }
           ]
         }
