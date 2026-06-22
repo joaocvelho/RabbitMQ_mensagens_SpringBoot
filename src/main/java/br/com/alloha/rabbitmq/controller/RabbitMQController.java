@@ -13,12 +13,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Tag(name = "Mensagens", description = "Endpoints para envio e consulta de mensagens via RabbitMQ")
@@ -46,15 +47,18 @@ public class RabbitMQController {
         return new ResponseEntity<>(rabbitMQModel, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Listar mensagens com paginação", description = "Retorna mensagens persistidas no banco MySQL com paginação. Parâmetros: page, size, sort")
+    @Operation(summary = "Listar mensagens", description = "Retorna mensagens persistidas no banco MySQL. Use ?size=N para controlar a quantidade e ?page=N para paginar")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Página de mensagens retornada com sucesso"),
+            @ApiResponse(responseCode = "200", description = "Lista de mensagens retornada com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor",
                     content = @Content(schema = @Schema(implementation = ErroResposta.class)))
     })
     @GetMapping("/mensagens")
-    public ResponseEntity<Page<RabbitMQModel>> listarMensagens(@PageableDefault(size = 20, sort = "id") Pageable pageable) {
-        Page<RabbitMQModel> mensagens = rabbitMQService.listarMensagens(pageable);
+    public ResponseEntity<List<RabbitMQModel>> listarMensagens(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size) {
+        List<RabbitMQModel> mensagens = rabbitMQService.listarMensagens(
+                PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
         return ResponseEntity.ok(mensagens);
     }
 }
