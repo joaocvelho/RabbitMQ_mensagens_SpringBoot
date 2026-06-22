@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Tag(name = "Mensagens", description = "Endpoints para envio e consulta de mensagens via RabbitMQ")
@@ -67,5 +68,16 @@ public class RabbitMQController {
         List<RabbitMQModel> mensagens = rabbitMQService.listarMensagens(
                 PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
         return ResponseEntity.ok(mensagens);
+    }
+
+    @PostMapping("/mensagens")
+    public ResponseEntity<?> validarWebhook(@RequestBody Map<String, String> body) {
+        String validationToken = body.get("validationToken");
+        if (validationToken != null) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .body(validationToken);
+        }
+        return ResponseEntity.badRequest().body("validationToken ausente");
     }
 }
