@@ -7,11 +7,12 @@ import br.com.alloha.rabbitmq.model.RabbitMQModel;
 import br.com.alloha.rabbitmq.produtor.RabbitMQProdutor;
 import br.com.alloha.rabbitmq.repository.RabbitMQRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class RabbitMQService {
@@ -40,7 +41,7 @@ public class RabbitMQService {
         return saved;
     }
 
-    public List<RabbitMQModel> listarMensagens() {
-        return rabbitMQRepository.findAllByOrderByIdDesc();
+    public Page<RabbitMQModel> listarMensagens(Pageable pageable) {
+        return rabbitMQRepository.findAllByOrderByIdDesc(pageable);
     }
 }
