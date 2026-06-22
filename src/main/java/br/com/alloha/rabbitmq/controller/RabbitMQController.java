@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,9 +55,15 @@ public class RabbitMQController {
                     content = @Content(schema = @Schema(implementation = ErroResposta.class)))
     })
     @GetMapping("/mensagens")
-    public ResponseEntity<List<RabbitMQModel>> listarMensagens(
+    public ResponseEntity<?> listarMensagens(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) String validationToken) {
+        if (validationToken != null) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .contentType(MediaType.TEXT_PLAIN)
+                    .body(validationToken);
+        }
         List<RabbitMQModel> mensagens = rabbitMQService.listarMensagens(
                 PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
         return ResponseEntity.ok(mensagens);
