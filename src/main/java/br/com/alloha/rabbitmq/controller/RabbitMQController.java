@@ -40,7 +40,7 @@ public class RabbitMQController {
     @PostMapping("/envio-email")
     public ResponseEntity<RabbitMQModel> envioEmail(@RequestBody @Valid RabbitMQDTO rabbitMQDTO) {
         RabbitMQModel rabbitMQModel = new RabbitMQModel();
-        BeanUtils.copyProperties(rabbitMQDTO, rabbitMQModel);
+        BeanUtils.copyProperties(rabbitMQDTO, rabbitMQModel, "id");
         rabbitMQService.enviarEmail(rabbitMQModel);
         return new ResponseEntity<>(rabbitMQModel, HttpStatus.CREATED);
     }
