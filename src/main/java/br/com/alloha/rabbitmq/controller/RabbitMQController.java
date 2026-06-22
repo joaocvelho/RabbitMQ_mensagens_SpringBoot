@@ -71,8 +71,12 @@ public class RabbitMQController {
     }
 
     @PostMapping("/mensagens")
-    public ResponseEntity<?> validarWebhook(@RequestBody Map<String, String> body) {
-        String validationToken = body.get("validationToken");
+    public ResponseEntity<?> validarWebhook(
+            @RequestParam(required = false) String validationToken,
+            @RequestBody(required = false) Map<String, String> body) {
+        if (validationToken == null && body != null) {
+            validationToken = body.get("validationToken");
+        }
         if (validationToken != null) {
             return ResponseEntity.status(HttpStatus.OK)
                     .contentType(MediaType.TEXT_PLAIN)
